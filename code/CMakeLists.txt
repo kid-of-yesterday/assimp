@@ -211,6 +211,8 @@ SET( Common_SRCS
   Common/AssertHandler.cpp
   Common/Exceptional.cpp
   Common/Base64.cpp
+  Common/CatBreed.h
+  Common/CatBreed.cpp
 )
 SOURCE_GROUP(Common FILES ${Common_SRCS})
 
