@@ -172,3 +172,15 @@ TEST_F(AssimpAPITest_aiMatrix3x3, operatorTest) {
        }
     }
 }
+
+TEST_F(AssimpAPITest_aiMatrix3x3, isIdentityTest) {
+    EXPECT_TRUE(aiMatrix3x3().IsIdentity());
+
+    // Small deviations within epsilon are still treated as identity.
+    result_cpp.a2 = static_cast<ai_real>(1e-4);
+    EXPECT_TRUE(result_cpp.IsIdentity());
+    EXPECT_FALSE(result_cpp.IsIdentity(static_cast<ai_real>(1e-5)));
+
+    result_cpp = aiMatrix3x3(2, 0, 0, 0, 1, 0, 0, 0, 1);
+    EXPECT_FALSE(result_cpp.IsIdentity());
+}

@@ -51,6 +51,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #endif
 
 #include <assimp/defs.h>
+#include <assimp/config.h>
 
 #ifdef __cplusplus
 
@@ -96,6 +97,15 @@ public:
     bool operator!= (const aiMatrix3x3t<TReal>& m) const;
 
     bool Equal(const aiMatrix3x3t<TReal> &m, TReal epsilon = ai_epsilon) const;
+
+    // -------------------------------------------------------------------
+    /** @brief Returns true if the matrix is the identity matrix.
+     *  @param epsilon Value of epsilon. Default value is 10e-3 for
+     *  consistency with aiMatrix4x4t::IsIdentity().
+     *  @return Returns true if the matrix is the identity matrix.
+     */
+    bool IsIdentity(const TReal
+            epsilon = AI_CONFIG_CHECK_IDENTITY_MATRIX_EPSILON_DEFAULT) const;
 
     template <typename TOther>
     operator aiMatrix3x3t<TOther> () const;

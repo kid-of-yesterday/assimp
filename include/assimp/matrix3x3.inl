@@ -168,6 +168,23 @@ bool aiMatrix3x3t<TReal>::Equal(const aiMatrix3x3t<TReal>& m, TReal epsilon) con
         std::abs(c3 - m.c3) <= epsilon;
 }
 
+// ---------------------------------------------------------------------------
+template<typename TReal>
+AI_FORCE_INLINE
+bool aiMatrix3x3t<TReal>::IsIdentity(const TReal epsilon) const {
+    const TReal one = static_cast<TReal>(1.0);
+    return
+        std::abs(a1 - one) <= epsilon &&
+        std::abs(a2) <= epsilon &&
+        std::abs(a3) <= epsilon &&
+        std::abs(b1) <= epsilon &&
+        std::abs(b2 - one) <= epsilon &&
+        std::abs(b3) <= epsilon &&
+        std::abs(c1) <= epsilon &&
+        std::abs(c2) <= epsilon &&
+        std::abs(c3 - one) <= epsilon;
+}
+
 // ------------------------------------------------------------------------------------------------
 template <typename TReal>
 AI_FORCE_INLINE
